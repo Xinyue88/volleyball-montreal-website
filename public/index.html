@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #fafaf8; }
+  ::selection { background: #e1382a; color: #ffffff; }
+  @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  a { color: #141414; }
+  a:hover { color: #e1382a; }
+</style>
+</helmet>
+
+<div style="font-family: 'Inter', sans-serif; background: #fafaf8; color: #1a1a1a; overflow-x: hidden;">
+
+  <!-- NAV -->
+  <header style="position: sticky; top: 0; z-index: 100; background: #ffffff; border-bottom: 1px solid #d8dde3; display: flex; align-items: center; justify-content: space-between; padding: 10px 40px; gap: 24px; overflow-x: auto;">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <img src="uploads/Logo VM (1).png" alt="Volleyball Montréal" style="height: 40px; width: auto; display: block;">
+      <span style="font-size: 12px; font-weight: 800; letter-spacing: 1.5px; color: #6e6e6e;">ARVM</span>
+    </div>
+    <nav style="display: flex; align-items: center; gap: 28px; flex-shrink: 0;" class="desktop-nav">
+      <div style="position: relative;" onMouseEnter="{{ openVm }}" onMouseLeave="{{ closeMenu }}">
+        <a href="#apropos" style="text-decoration: none; font-weight: 700; font-size: 15px; color: #141414; display: flex; align-items: center; gap: 4px; white-space: nowrap;">Volleyball Montréal <span style="font-size: 11px;">▾</span></a>
+        <sc-if value="{{ isVmOpen }}">
+          <div style="position: absolute; top: 100%; left: 0; margin-top: 6px; background: #fff; border: 1px solid #d8dde3; border-radius: 10px; box-shadow: 0 12px 30px -12px #14141440; min-width: 220px; padding: 8px; z-index: 200;">
+            <a href="#" style="display: block; text-decoration: none; color: #141414; font-size: 14px; padding: 9px 12px; border-radius: 6px;" style-hover="background: #f1f0ed;">Mises à jour</a>
+            <div style="font-weight: 700; font-size: 13px; color: #6e6e6e; padding: 9px 12px 2px;">Notre Équipe</div>
+            <a href="#" style="display: block; text-decoration: none; color: #141414; font-size: 14px; padding: 9px 12px 9px 24px; border-radius: 6px;" style-hover="background: #f1f0ed;">Membres du CA et bénévoles</a>
+            <a href="#" style="display: block; text-decoration: none; color: #141414; font-size: 14px; padding: 9px 12px 9px 24px; border-radius: 6px;" style-hover="background: #f1f0ed;">Nos Entraîneurs</a>
+            <a href="#clubs" style="display: block; text-decoration: none; color: #141414; font-size: 14px; padding: 9px 12px; border-radius: 6px;" style-hover="background: #f1f0ed;">Nos Affiliés</a>
+          </div>
+        </sc-if>
+      </div>
+      <div style="position: relative;" onMouseEnter="{{ openServices }}" onMouseLeave="{{ closeMenu }}">
+        <a href="#horaire" style="text-decoration: none; font-weight: 500; font-size: 15px; color: #141414; display: flex; align-items: center; gap: 4px; white-space: nowrap;">Nos Services <span style="font-size: 11px;">▾</span></a>
+        <sc-if value="{{ isServicesOpen }}">
+          <div style="position: absolute; top: 100%; left: 0; margin-top: 6px; background: #fff; border: 1px solid #d8dde3; border-radius: 10px; box-shadow: 0 12px 30px -12px #14141440; min-width: 230px; padding: 8px; z-index: 200;">
+            <a href="#" style="display: block; text-decoration: none; color: #141414; font-size: 14px; padding: 9px 12px; border-radius: 6px;" style-hover="background: #f1f0ed;">Formation d'entraîneur</a>
+            <a href="#" style="display: block; text-decoration: none; color: #141414; font-size: 14px; padding: 9px 12px; border-radius: 6px;" style-hover="background: #f1f0ed;">Plage Horaire</a>
+            <a href="#" style="display: block; text-decoration: none; color: #141414; font-size: 14px; padding: 9px 12px; border-radius: 6px;" style-hover="background: #f1f0ed;">Réservation de Terrain</a>
+            <a href="#" style="display: block; text-decoration: none; color: #141414; font-size: 14px; padding: 9px 12px; border-radius: 6px;" style-hover="background: #f1f0ed;">Cours Offerts</a>
+            <a href="#" style="display: block; text-decoration: none; color: #141414; font-size: 14px; padding: 9px 12px; border-radius: 6px;" style-hover="background: #f1f0ed;">Formation d'arbitre</a>
+            <a href="#" style="display: block; text-decoration: none; color: #141414; font-size: 14px; padding: 9px 12px; border-radius: 6px;" style-hover="background: #f1f0ed;">Programme de mini-volleyball</a>
+          </div>
+        </sc-if>
+      </div>
+      <div style="position: relative;" onMouseEnter="{{ openConnect }}" onMouseLeave="{{ closeMenu }}">
+        <a href="#inscription" style="text-decoration: none; font-weight: 500; font-size: 15px; color: #141414; display: flex; align-items: center; gap: 4px; white-space: nowrap;">Se Connecter <span style="font-size: 11px;">▾</span></a>
+        <sc-if value="{{ isConnectOpen }}">
+          <div style="position: absolute; top: 100%; left: 0; margin-top: 6px; background: #fff; border: 1px solid #d8dde3; border-radius: 10px; box-shadow: 0 12px 30px -12px #14141440; min-width: 200px; padding: 8px; z-index: 200;">
+            <a href="#" style="display: block; text-decoration: none; color: #141414; font-size: 14px; padding: 9px 12px; border-radius: 6px;" style-hover="background: #f1f0ed;">Pour les Ligues</a>
+            <a href="#" style="display: block; text-decoration: none; color: #141414; font-size: 14px; padding: 9px 12px; border-radius: 6px;" style-hover="background: #f1f0ed;">Pour les Clubs</a>
+            <a href="#" style="display: block; text-decoration: none; color: #141414; font-size: 14px; padding: 9px 12px; border-radius: 6px;" style-hover="background: #f1f0ed;">Pour les Joueurs</a>
+          </div>
+        </sc-if>
+      </div>
+      <a href="#contact" style="text-decoration: none; font-weight: 500; font-size: 15px; color: #141414; white-space: nowrap;">Contactez-nous</a>
+      <a href="#contact" style="text-decoration: none; font-weight: 500; font-size: 15px; color: #141414; white-space: nowrap;">FAQ</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section style="display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; padding: 80px 40px; max-width: 1440px; margin: 0 auto;">
+    <div>
+      <div style="display: inline-flex; align-items: center; gap: 8px; background: #14141414; color: #141414; font-weight: 700; font-size: 13px; letter-spacing: 1px; padding: 8px 16px; border-radius: 999px; margin-bottom: 24px;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: {{ accentColor }};"></span>
+        L'ÎLE DE MONTRÉAL, UN RÉSEAU — DIT ARVM
+      </div>
+      <h1 style="font-family: 'Anton', sans-serif; font-size: 76px; line-height: 0.95; color: #141414; margin: 0 0 20px;">
+        LE VOLLEYBALL<br>MONTRÉALAIS,<br><span style="color: {{ accentColor }};">UNI.</span>
+      </h1>
+      <p style="font-size: 20px; font-style: italic; color: #141414; margin: 0 0 20px;">
+        Où le volleyball, l'esprit d'équipe et le plaisir se rencontrent.
+      </p>
+      <p style="font-size: 19px; line-height: 1.6; color: #3a3a3a; max-width: 480px; margin: 0 0 32px;">
+        Volleyball Montréal a pour mission d'être le point de référence pour la communauté du volleyball à Montréal — un guichet unique où les joueurs trouvent facilement l'information sur les clubs, les ligues, les entraînements et les événements.
+      </p>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+        <a href="#clubs" style="text-decoration: none; background: #141414; color: #fafaf8; font-weight: 700; font-size: 16px; padding: 16px 32px; border-radius: 999px;" style-hover="background: #000000;">Trouver un club</a>
+        <a href="#horaire" style="text-decoration: none; background: transparent; color: #141414; font-weight: 700; font-size: 16px; padding: 16px 32px; border-radius: 999px; border: 2px solid #141414;" style-hover="background: #14141410;">Voir l'horaire</a>
+      </div>
+    </div>
+    <div style="position: relative; height: 460px;">
+      <div style="position: absolute; inset: 0; transform: rotate(3deg); border-radius: 24px; overflow: hidden; box-shadow: 0 30px 60px -20px #14141455;">
+        <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="hero-main" shape="rect" placeholder="Photo : joueurs en action, filet en avant-plan" hint-size="100%,100%"></x-import>
+      </div>
+      <div style="position: absolute; width: 150px; height: 150px; bottom: -20px; left: -30px; border-radius: 20px; overflow: hidden; border: 6px solid #fafaf8; box-shadow: 0 20px 40px -10px #14141455; transform: rotate(-6deg);">
+        <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="hero-small" shape="rect" placeholder="Photo : célébration d'équipe" hint-size="100%,100%"></x-import>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="apropos" style="padding: 100px 40px; background: #141414;">
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <div style="font-weight: 700; font-size: 13px; letter-spacing: 2px; color: {{ accentColor }}; margin-bottom: 16px;">QUI SOMMES-NOUS?</div>
+      <h2 style="font-family: 'Anton', sans-serif; font-size: 44px; color: #fafaf8; margin: 0 0 32px; max-width: 700px; line-height: 1.05;">RASSEMBLER LE VOLLEYBALL DE L'ÎLE SOUS UN MÊME TOIT</h2>
+      <p style="font-size: 18px; line-height: 1.7; color: #d9d9d9; max-width: 700px; margin: 0 0 32px;">
+        L'Association régionale Volleyball Montréal — dite ARVM — est un organisme sans but lucratif dédié à la promotion, au développement et à l'encadrement du volleyball sur l'île de Montréal. Notre objectif est de consolider la structure sportive, de soutenir activement nos clubs membres et d'assurer une offre de qualité.
+      </p>
+      <div style="margin-bottom: 40px;">
+        <div style="font-weight: 700; font-size: 15px; color: #fafaf8; margin-bottom: 8px;">Notre mission :</div>
+        <p style="font-size: 16px; line-height: 1.7; color: #d9d9d9; max-width: 700px; margin: 0;">
+          Volleyball Montréal a pour mission d'être le point de référence pour la communauté du volleyball à Montréal. En tant qu'affiliation regroupant les clubs de la région, nous créons un guichet unique où les joueurs peuvent facilement trouver l'information sur les clubs, les ligues, les entraînements et les événements.
+        </p>
+      </div>
+      <div style="margin-bottom: 48px;">
+        <div style="font-weight: 700; font-size: 15px; color: #fafaf8; margin-bottom: 8px;">Rejoignez la communauté :</div>
+        <p style="font-size: 16px; line-height: 1.7; color: #d9d9d9; max-width: 700px; margin: 0;">
+          Nous invitons les joueurs de tous niveaux, les ligues de volleyball et les clubs de l'île de Montréal à se joindre à nous. Que tu veuilles t'amuser, te dépasser ou compétitionner, il y a une place pour toi sur nos terrains.
+        </p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+        <sc-for list="{{ missionItems }}" as="item" hint-placeholder-count="3">
+          <div style="background: #fafaf812; border: 1px solid #fafaf824; border-radius: 16px; padding: 28px;">
+            <div style="font-family: 'Anton', sans-serif; font-size: 22px; color: {{ accentColor }}; margin-bottom: 10px;">{{ item.title }}</div>
+            <div style="font-size: 15px; line-height: 1.6; color: #d4d4d4;">{{ item.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top: 64px;">
+        <div style="font-weight: 700; font-size: 13px; letter-spacing: 2px; color: {{ accentColor }}; margin-bottom: 16px;">STRUCTURE</div>
+        <h3 style="font-family: 'Anton', sans-serif; font-size: 30px; color: #fafaf8; margin: 0 0 28px;">CATÉGORIES DE MEMBRES</h3>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+          <sc-for list="{{ memberCategories }}" as="cat" hint-placeholder-count="4">
+            <div style="background: #fafaf80d; border: 1px solid #fafaf822; border-radius: 14px; padding: 22px;">
+              <div style="font-family: 'Anton', sans-serif; font-size: 15px; color: {{ accentColor }}; margin-bottom: 8px;">CATÉGORIE {{ cat.n }}</div>
+              <div style="font-weight: 700; font-size: 15px; color: #fafaf8; margin-bottom: 8px;">{{ cat.title }}</div>
+              <div style="font-size: 13px; line-height: 1.5; color: #c4c4c4;">{{ cat.desc }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLUBS MEMBRES -->
+  <section id="clubs" style="padding: 100px 40px; max-width: 1280px; margin: 0 auto;">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin-bottom: 48px;">
+      <div>
+        <div style="font-weight: 700; font-size: 13px; letter-spacing: 2px; color: #6e6e6e; margin-bottom: 12px;">RÉPERTOIRE</div>
+        <h2 style="font-family: 'Anton', sans-serif; font-size: 40px; color: #141414; margin: 0;">CLUBS MEMBRES À MONTRÉAL</h2>
+      </div>
+      <p style="font-size: 15px; color: #6e6e6e; max-width: 380px; margin: 0;">Clubs affiliés à Volleyball Québec sur l'île de Montréal. Cliquez pour visiter leur site.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat({{ clubColumns }}, 1fr); gap: 20px;">
+      <sc-for list="{{ clubs }}" as="club" hint-placeholder-count="6">
+        <a href="{{ club.url }}" style="text-decoration: none; color: inherit; display: block; background: #fff; border: 2px solid #14141418; border-radius: 18px; padding: 24px; transition: transform 0.15s;" style-hover="border-color: {{ accentColor }}; transform: translateY(-4px);">
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: #14141412; display: flex; align-items: center; justify-content: center; font-family: 'Anton', sans-serif; font-size: 18px; color: #141414; flex-shrink: 0;">{{ club.initials }}</div>
+            <div>
+              <div style="font-weight: 700; font-size: 16px; color: #141414;">{{ club.name }}</div>
+              <div style="font-size: 13px; color: #6e6e6e;">{{ club.borough }}</div>
+            </div>
+          </div>
+          <div style="font-size: 13px; font-weight: 600; color: {{ accentColor }};">Visiter le site →</div>
+        </a>
+      </sc-for>
+    </div>
+    <div style="text-align: center; margin-top: 40px; font-size: 14px; color: #8a8a8a;">Vous représentez un club affilié à Volleyball Québec sur l'île? <a href="#contact" style="font-weight: 700;">Contactez-nous pour être ajouté.</a></div>
+  </section>
+
+  <!-- HORAIRE -->
+  <section id="horaire" style="padding: 100px 40px; background: #f1f0ed;">
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <div style="font-weight: 700; font-size: 13px; letter-spacing: 2px; color: #6e6e6e; margin-bottom: 12px;">NOTRE LIGUE</div>
+      <h2 style="font-family: 'Anton', sans-serif; font-size: 40px; color: #141414; margin: 0 0 24px;">LIGUE FÉMININE U21/25</h2>
+      <p style="font-size: 17px; line-height: 1.7; color: #3a3a3a; max-width: 720px; margin: 0 0 32px;">
+        Un circuit compétitif de calibre Relève pour les joueuses de 21 ans et moins de la grande région de Montréal — pensé pour celles qui n'évoluent pas dans les circuits d'élite (RSEQ Division 1 ou universitaire).
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 48px;">
+        <sc-for list="{{ leagueFacts }}" as="fact" hint-placeholder-count="4">
+          <div style="background: #fff; border-radius: 14px; padding: 20px;">
+            <div style="font-family: 'Anton', sans-serif; font-size: 20px; color: {{ accentColor }}; margin-bottom: 6px;">{{ fact.value }}</div>
+            <div style="font-size: 13px; color: #6e6e6e; line-height: 1.4;">{{ fact.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="font-weight: 700; font-size: 13px; letter-spacing: 2px; color: #6e6e6e; margin-bottom: 12px;">CALENDRIER VOLLEYBALL MONTRÉAL</div>
+      <h3 style="font-family: 'Anton', sans-serif; font-size: 28px; color: #141414; margin: 0 0 32px;">MATCHS ET ÉVÉNEMENTS À VENIR</h3>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <sc-for list="{{ events }}" as="ev" hint-placeholder-count="4">
+          <div style="display: grid; grid-template-columns: 100px 1fr auto auto; align-items: center; gap: 24px; background: #fff; border-radius: 16px; padding: 20px 28px;">
+            <div>
+              <div style="font-family: 'Anton', sans-serif; font-size: 26px; color: {{ accentColor }}; line-height: 1;">{{ ev.day }}</div>
+              <div style="font-size: 12px; font-weight: 700; color: #6e6e6e; letter-spacing: 1px;">{{ ev.month }}</div>
+            </div>
+            <div>
+              <div style="font-weight: 700; font-size: 17px; color: #141414;">{{ ev.title }}</div>
+              <div style="font-size: 14px; color: #6e6e6e;">{{ ev.location }}</div>
+            </div>
+            <div style="font-size: 13px; font-weight: 700; color: #141414; background: #14141412; padding: 6px 14px; border-radius: 999px;">{{ ev.type }}</div>
+            <a href="#inscription" style="text-decoration: none; font-weight: 700; font-size: 14px; color: #141414; white-space: nowrap;">S'inscrire →</a>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSCRIPTION -->
+  <section id="inscription" style="padding: 100px 40px; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px;">
+    <div>
+      <div style="font-weight: 700; font-size: 13px; letter-spacing: 2px; color: #6e6e6e; margin-bottom: 12px;">REJOIGNEZ-NOUS</div>
+      <h2 style="font-family: 'Anton', sans-serif; font-size: 40px; color: #141414; margin: 0 0 24px;">S'INSCRIRE À UNE LIGUE OU UN TOURNOI</h2>
+      <p style="font-size: 16px; line-height: 1.7; color: #3a3a3a; margin: 0 0 24px;">Remplissez le formulaire et notre équipe vous contactera avec les places disponibles selon votre niveau et votre secteur.</p>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <sc-for list="{{ steps }}" as="step" hint-placeholder-count="3">
+          <div style="display: flex; gap: 14px; align-items: flex-start;">
+            <div style="width: 28px; height: 28px; border-radius: 50%; background: #141414; color: #fafaf8; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex-shrink: 0;">{{ step.n }}</div>
+            <div style="font-size: 15px; color: #3a3a3a; padding-top: 3px;">{{ step.text }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="background: #fff; border-radius: 20px; padding: 36px; display: flex; flex-direction: column; gap: 16px;">
+      <div>
+        <label style="font-size: 13px; font-weight: 700; color: #141414; display: block; margin-bottom: 6px;">Nom complet</label>
+        <input type="text" placeholder="Votre nom" style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 10px; border: 2px solid #14141422; font-size: 15px; font-family: inherit;">
+      </div>
+      <div>
+        <label style="font-size: 13px; font-weight: 700; color: #141414; display: block; margin-bottom: 6px;">Courriel</label>
+        <input type="email" placeholder="vous@exemple.com" style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 10px; border: 2px solid #14141422; font-size: 15px; font-family: inherit;">
+      </div>
+      <div>
+        <label style="font-size: 13px; font-weight: 700; color: #141414; display: block; margin-bottom: 6px;">Intérêt</label>
+        <select style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 10px; border: 2px solid #14141422; font-size: 15px; font-family: inherit; background: #fff;">
+          <option>Ligue récréative</option>
+          <option>Ligue compétitive</option>
+          <option>Tournoi</option>
+          <option>Bénévolat / arbitrage</option>
+        </select>
+      </div>
+      <button style="margin-top: 8px; background: #141414; color: #fafaf8; border: none; font-weight: 700; font-size: 16px; padding: 16px; border-radius: 12px; cursor: pointer;" style-hover="background: #000000;">Envoyer</button>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section id="galerie" style="padding: 100px 40px; background: #141414;">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div style="font-weight: 700; font-size: 13px; letter-spacing: 2px; color: {{ accentColor }}; margin-bottom: 12px;">EN IMAGES</div>
+      <h2 style="font-family: 'Anton', sans-serif; font-size: 40px; color: #fafaf8; margin: 0 0 40px;">GALERIE PHOTO</h2>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 180px; gap: 16px;">
+        <div style="grid-column: span 2; grid-row: span 2; border-radius: 16px; overflow: hidden;"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="gal-1" shape="rect" placeholder="Match ligue ARVM" hint-size="100%,100%"></x-import></div>
+        <div style="border-radius: 16px; overflow: hidden;"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="gal-2" shape="rect" placeholder="Service" hint-size="100%,100%"></x-import></div>
+        <div style="border-radius: 16px; overflow: hidden;"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="gal-3" shape="rect" placeholder="Équipe" hint-size="100%,100%"></x-import></div>
+        <div style="border-radius: 16px; overflow: hidden;"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="gal-4" shape="rect" placeholder="Tournoi" hint-size="100%,100%"></x-import></div>
+        <div style="border-radius: 16px; overflow: hidden;"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="gal-5" shape="rect" placeholder="Célébration" hint-size="100%,100%"></x-import></div>
+        <div style="grid-column: span 2; border-radius: 16px; overflow: hidden;"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="gal-6" shape="rect" placeholder="Filet, gymnase" hint-size="100%,100%"></x-import></div>
+        <div style="border-radius: 16px; overflow: hidden;"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="gal-7" shape="rect" placeholder="Bénévoles" hint-size="100%,100%"></x-import></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="padding: 100px 40px; max-width: 900px; margin: 0 auto; text-align: center;">
+    <div style="font-weight: 700; font-size: 13px; letter-spacing: 2px; color: #6e6e6e; margin-bottom: 12px;">PARLONS-EN</div>
+    <h2 style="font-family: 'Anton', sans-serif; font-size: 40px; color: #141414; margin: 0 0 24px;">UNE QUESTION? UN CLUB À AJOUTER?</h2>
+    <p style="font-size: 17px; color: #3a3a3a; margin: 0 0 32px;">Notre équipe répond du lundi au vendredi.</p>
+    <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; font-size: 16px; font-weight: 600; color: #141414;">
+      <a href="mailto:info@volleyballmontreal.ca" style="text-decoration: none;">info@volleyballmontreal.ca</a>
+      <span>514-555-0142</span>
+      <span>Montréal, QC</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background: #000000; padding: 48px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+    <div style="font-family: 'Anton', sans-serif; font-size: 18px; color: #fafaf8;">VOLLEYBALL MONTRÉAL · ARVM</div>
+    <div style="display: flex; gap: 28px; flex-wrap: wrap;">
+      <a href="#apropos" style="text-decoration: none; color: #d4d4d4; font-size: 14px; font-weight: 600;">À propos</a>
+      <a href="#clubs" style="text-decoration: none; color: #d4d4d4; font-size: 14px; font-weight: 600;">Clubs membres</a>
+      <a href="#horaire" style="text-decoration: none; color: #d4d4d4; font-size: 14px; font-weight: 600;">Horaire</a>
+      <a href="#contact" style="text-decoration: none; color: #d4d4d4; font-size: 14px; font-weight: 600;">Contact</a>
+    </div>
+    <div style="font-size: 13px; color: #8a8a8a;">© 2026 Volleyball Montréal. Tous droits réservés.</div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}, &quot;accentColor&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#e1382a&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#e1382a&quot;, &quot;#ff5a3d&quot;, &quot;#a82a1c&quot;]}, &quot;clubColumns&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 3, &quot;tsType&quot;: &quot;number&quot;, &quot;min&quot;: 2, &quot;max&quot;: 4, &quot;step&quot;: 1}}">
+class Component extends DCLogic {
+  state = { openMenu: null };
+  renderVals() {
+    return {
+      accentColor: this.props.accentColor ?? '#e1382a',
+      clubColumns: this.props.clubColumns ?? 3,
+      openVm: () => this.setState({ openMenu: 'vm' }),
+      openServices: () => this.setState({ openMenu: 'services' }),
+      openConnect: () => this.setState({ openMenu: 'connect' }),
+      closeMenu: () => this.setState({ openMenu: null }),
+      isVmOpen: this.state.openMenu === 'vm',
+      isServicesOpen: this.state.openMenu === 'services',
+      isConnectOpen: this.state.openMenu === 'connect',
+      missionItems: [
+        { title: 'Clubs & écoles', desc: 'Appuyer le développement des clubs locaux et accompagner le milieu scolaire dans le développement du volleyball et du volleyball de plage.' },
+        { title: 'Ligues & tournois', desc: 'Soutenir l\'organisation et la réalisation d\'événements de volleyball et de volleyball de plage sur l\'île de Montréal.' },
+        { title: 'Concertation', desc: 'Concerter et mobiliser les acteurs du volleyball et du volleyball de plage à l\'échelle régionale.' },
+      ],
+      memberCategories: [
+        { n: '1', title: 'Clubs affiliés à VBQ', desc: 'Clubs ayant un siège social et une offre de service sur l\'île de Montréal. Seuls ces membres ont droit de vote à l\'assemblée générale.' },
+        { n: '2', title: 'Institutions scolaires', desc: 'Centres de services scolaires et établissements d\'enseignement ayant un siège social sur l\'île de Montréal.' },
+        { n: '3', title: 'Organismes', desc: 'Organismes à but lucratif ou non lucratif offrant des activités de volleyball ou volleyball de plage sur l\'île.' },
+        { n: '4', title: 'Athlètes', desc: 'Athlètes inscrits dans un club membre de VM, devenant membres individuels de VM.' },
+      ],
+      clubs: [
+        { name: 'Club de volleyball Rosemont', borough: 'Rosemont–La Petite-Patrie', initials: 'RM', url: '#' },
+        { name: 'Volleyball Plateau', borough: 'Le Plateau-Mont-Royal', initials: 'PM', url: '#' },
+        { name: 'Club Ahuntsic Volleyball', borough: 'Ahuntsic-Cartierville', initials: 'AC', url: '#' },
+        { name: 'Volleyball Verdun', borough: 'Verdun', initials: 'VD', url: '#' },
+        { name: 'Club de l\'Ouest-de-l\'Île', borough: 'Ouest-de-l\'Île', initials: 'OI', url: '#' },
+        { name: 'Volleyball Hochelaga', borough: 'Mercier–Hochelaga', initials: 'HM', url: '#' },
+      ],
+      leagueFacts: [
+        { value: 'Féminin', label: '21 ans et moins (calculé au 31 décembre)' },
+        { value: '4 sets de 25', label: 'Format fixe, tous les matchs de saison régulière' },
+        { value: 'Double round-robin', label: 'Chaque équipe affronte les autres deux fois' },
+        { value: '8 à 14 joueuses', label: 'Minimum et maximum par match' },
+      ],
+      events: [
+        { day: '02', month: 'AOÛT', title: 'Ligue féminine U21/25 — Journée 6', location: 'Centre Étienne-Desmarteau', type: 'Ligue', },
+        { day: '09', month: 'AOÛT', title: 'Tournoi de plage Volleyball Montréal', location: 'Plage de l\'Île-Notre-Dame', type: 'Tournoi', },
+        { day: '16', month: 'AOÛT', title: 'Ligue féminine U21/25 — Séries', location: 'Complexe sportif Claude-Robillard', type: 'Ligue', },
+        { day: '23', month: 'AOÛT', title: 'Tournoi ouvert 4x4', location: 'Parc Jarry', type: 'Tournoi', },
+      ],
+      steps: [
+        { n: '1', text: 'Remplissez le formulaire avec vos coordonnées et votre niveau.' },
+        { n: '2', text: 'Notre équipe vous propose une ligue, un tournoi ou un club partenaire.' },
+        { n: '3', text: 'Vous confirmez votre place et recevez l\'horaire complet.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
