@@ -141,7 +141,7 @@ const VolleyballMontreal = () => {
         title: 'Questions fréquentes',
         subtitle: 'Trouvez les réponses à vos questions',
         clickToExpand: 'Cliquez pour voir la réponse'
-      }
+      },
       leagues: {
         title: 'Nos Ligues',
         subtitle: 'Du volleyball dynamique, fun et pour tous les niveaux',
