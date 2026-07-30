@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 const VolleyballMontreal = () => {
   const [currentPage, setCurrentPage] = useState('home');
   const [language, setLanguage] = useState('fr');
+  const [selectedRegion, setSelectedRegion] = useState('all');
+  const [hoveredClub, setHoveredClub] = useState(null);
+  const [mapView, setMapView] = useState(false);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const [expandedFaqIndex, setExpandedFaqIndex] = useState(null);
 
@@ -169,6 +172,11 @@ const VolleyballMontreal = () => {
         contact: 'Contact',
         faq: 'FAQ'
       },
+      faq: {
+        title: 'Frequently Asked Questions',
+        subtitle: 'Find answers to your questions',
+        clickToExpand: 'Click to see answer'
+      },
       leagues: {
         title: 'Our Leagues',
         subtitle: 'Dynamic, fun volleyball for all levels',
@@ -223,6 +231,16 @@ const VolleyballMontreal = () => {
       image: '💪',
       role: 'Joueuse, 25 ans'
     }
+  ];
+
+  const summerLeagueSchedule = [
+    { date: '13 juin', time: '11h-15h', type: 'Regular' },
+    { date: '20 juin', time: '11h-15h', type: 'Regular' },
+    { date: '27 juin', time: '11h-15h', type: 'Regular' },
+    { date: '11 juillet', time: '11h-15h', type: 'Regular' },
+    { date: '18 juillet', time: '11h-15h', type: 'Regular' },
+    { date: '25 juillet', time: '11h-15h', type: 'Regular' },
+    { date: '1er août', time: '11h-18h', type: 'Finale' }
   ];
 
   // Page Components
@@ -809,6 +827,13 @@ const VolleyballMontreal = () => {
       fontSize: '64px',
       marginBottom: '1rem'
     },
+    ctaSection: {
+      backgroundColor: '#f9f9f9',
+      border: '2px solid #E63946',
+      borderRadius: '8px',
+      padding: '3rem',
+      textAlign: 'center'
+    },
     p: {
       fontSize: '15px',
       color: '#555',
@@ -1161,21 +1186,21 @@ const VolleyballMontreal = () => {
         <div style={styles.footerContent}>
           <div>
             <div style={styles.footerTitle}>À propos</div>
-            <a style={styles.footerLink}>Notre mission</a>
-            <a style={styles.footerLink}>Notre équipe</a>
-            <a style={styles.footerLink}>Nos Affiliés</a>
+            <button onClick={() => { setCurrentPage('home'); window.scrollTo(0, 0); }} style={{...styles.footerLink, background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>Notre mission</button>
+            <button onClick={() => { setCurrentPage('team'); window.scrollTo(0, 0); }} style={{...styles.footerLink, background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>Notre équipe</button>
+            <button onClick={() => { setCurrentPage('affiliates'); window.scrollTo(0, 0); }} style={{...styles.footerLink, background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>Nos Affiliés</button>
           </div>
           <div>
             <div style={styles.footerTitle}>Ressources</div>
-            <a style={styles.footerLink}>Horaires</a>
-            <a style={styles.footerLink}>Terrains</a>
-            <a style={styles.footerLink}>Règlements</a>
+            <button onClick={() => { setCurrentPage('schedule'); window.scrollTo(0, 0); }} style={{...styles.footerLink, background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>Horaires</button>
+            <button onClick={() => { setCurrentPage('affiliates'); window.scrollTo(0, 0); }} style={{...styles.footerLink, background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>Terrains</button>
+            <button onClick={() => { setCurrentPage('faq'); window.scrollTo(0, 0); }} style={{...styles.footerLink, background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>Règlements</button>
           </div>
           <div>
             <div style={styles.footerTitle}>Se connecter</div>
-            <a style={styles.footerLink}>Pour les joueurs</a>
-            <a style={styles.footerLink}>Pour les clubs</a>
-            <a style={styles.footerLink}>Pour les ligues</a>
+            <button onClick={() => { setCurrentPage('leagues'); window.scrollTo(0, 0); }} style={{...styles.footerLink, background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>Pour les joueurs</button>
+            <button onClick={() => { setCurrentPage('affiliates'); window.scrollTo(0, 0); }} style={{...styles.footerLink, background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>Pour les clubs</button>
+            <button onClick={() => { setCurrentPage('leagues'); window.scrollTo(0, 0); }} style={{...styles.footerLink, background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>Pour les ligues</button>
           </div>
           <div>
             <div style={styles.footerTitle}>Nous joindre</div>
