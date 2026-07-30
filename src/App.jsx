@@ -3,9 +3,6 @@ import React, { useState } from 'react';
 const VolleyballMontreal = () => {
   const [currentPage, setCurrentPage] = useState('home');
   const [language, setLanguage] = useState('fr');
-  const [selectedRegion, setSelectedRegion] = useState('all');
-  const [hoveredClub, setHoveredClub] = useState(null);
-  const [mapView, setMapView] = useState(false);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const [expandedFaqIndex, setExpandedFaqIndex] = useState(null);
 
@@ -226,16 +223,6 @@ const VolleyballMontreal = () => {
       image: '💪',
       role: 'Joueuse, 25 ans'
     }
-  ];
-
-  const summerLeagueSchedule = [
-    { date: '13 juin', time: '11h-15h', type: 'Regular' },
-    { date: '20 juin', time: '11h-15h', type: 'Regular' },
-    { date: '27 juin', time: '11h-15h', type: 'Regular' },
-    { date: '11 juillet', time: '11h-15h', type: 'Regular' },
-    { date: '18 juillet', time: '11h-15h', type: 'Regular' },
-    { date: '25 juillet', time: '11h-15h', type: 'Regular' },
-    { date: '1er août', time: '11h-18h', type: 'Finale' }
   ];
 
   // Page Components
@@ -821,13 +808,6 @@ const VolleyballMontreal = () => {
     teamAvatar: {
       fontSize: '64px',
       marginBottom: '1rem'
-    },
-    ctaSection: {
-      backgroundColor: '#f9f9f9',
-      border: '2px solid #E63946',
-      borderRadius: '8px',
-      padding: '3rem',
-      textAlign: 'center'
     },
     p: {
       fontSize: '15px',
