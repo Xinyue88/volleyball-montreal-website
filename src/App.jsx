@@ -1161,21 +1161,21 @@ const VolleyballMontreal = () => {
         <div style={styles.footerContent}>
           <div>
             <div style={styles.footerTitle}>À propos</div>
-            <a href="#" style={styles.footerLink}>Notre mission</a>
-            <a href="#" style={styles.footerLink}>Notre équipe</a>
-            <a href="#" style={styles.footerLink}>Nos Affiliés</a>
+            <a style={styles.footerLink}>Notre mission</a>
+            <a style={styles.footerLink}>Notre équipe</a>
+            <a style={styles.footerLink}>Nos Affiliés</a>
           </div>
           <div>
             <div style={styles.footerTitle}>Ressources</div>
-            <a href="#" style={styles.footerLink}>Horaires</a>
-            <a href="#" style={styles.footerLink}>Terrains</a>
-            <a href="#" style={styles.footerLink}>Règlements</a>
+            <a style={styles.footerLink}>Horaires</a>
+            <a style={styles.footerLink}>Terrains</a>
+            <a style={styles.footerLink}>Règlements</a>
           </div>
           <div>
             <div style={styles.footerTitle}>Se connecter</div>
-            <a href="#" style={styles.footerLink}>Pour les joueurs</a>
-            <a href="#" style={styles.footerLink}>Pour les clubs</a>
-            <a href="#" style={styles.footerLink}>Pour les ligues</a>
+            <a style={styles.footerLink}>Pour les joueurs</a>
+            <a style={styles.footerLink}>Pour les clubs</a>
+            <a style={styles.footerLink}>Pour les ligues</a>
           </div>
           <div>
             <div style={styles.footerTitle}>Nous joindre</div>
